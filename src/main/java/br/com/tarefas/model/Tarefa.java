@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,8 +26,12 @@ public class Tarefa {
 	private TarefaStatus status;
 	private LocalDate dataEntrega;
 	private boolean visivel;
-//	private TarefaCategoria categoria;
-//	private Usuario usuario;
+	
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private TarefaCategoria categoria;
+	@ManyToOne
+	private Usuario usuario;
 	
 	
 	public String getDescricao() {
@@ -58,18 +64,18 @@ public class Tarefa {
 	public void setVisivel(boolean visivel) {
 		this.visivel = visivel;
 	}
-//	public TarefaCategoria getCategoria() {
-//		return categoria;
-//	}
-//	public void setCategoria(TarefaCategoria categoria) {
-//		this.categoria = categoria;
-//	}
-//	public Usuario getUsuario() {
-//		return usuario;
-//	}
-//	public void setUsuario(Usuario usuario) {
-//		this.usuario = usuario;
-//	}
+	public TarefaCategoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(TarefaCategoria categoria) {
+		this.categoria = categoria;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	
 	
 	
